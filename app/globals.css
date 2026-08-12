@@ -2,26 +2,45 @@
 @plugin "daisyui";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Main Body Background - Warm Cream */
+  --color-body: #e2d9cb;
+
+  /* Navbar Background - Deep Navy */
+  --color-navbar: #022e4c;
+
+  /* Card Background - White */
+  --color-card: #ffffff;
+
+  /* Sidebar Background - Slate Blue */
+  --color-sidebar: #517493;
+
+  /* Border Color */
+  --color-border: #d6cfc0;
+
+  /* Primary Text - Burgundy */
+  --color-text: #56061d;
+
+  /* Secondary Text - Slate Blue */
+  --color-text-light: #517493;
+
+  /* Primary - Deep Navy */
+  --color-primary: #022e4c;
+
+  /* Accent - Burgundy */
+  --color-accent: #56061d;
+
+  /* Success - Slate Blue */
+  --color-success: #517493;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-background: var(--color-body);
+  --color-foreground: var(--color-text);
+  --font-sans: var(--font-marcellus);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-body);
+  color: var(--color-text);
+  font-family: var(--font-marcellus), serif;
 }
