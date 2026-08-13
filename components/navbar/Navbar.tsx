@@ -3,7 +3,7 @@ import SearchBar from "./SearchBar";
 import NavLinks from "./NavLinks";
 import CartButton from "./CartButton";
 import UserMenu from "./UserMenu";
-
+import LoginBtn from "./LoginBtn";
 const Navbar = () => {
   return (
     <div className="bg-[var(--color-navbar)] shadow-sm py-4">
@@ -22,7 +22,7 @@ const Navbar = () => {
 
         <div className="ml-3 flex items-center gap-1">
           <CartButton />
-          <UserMenu />
+          <LoginBtn />
         </div>
       </div>
     </div>
