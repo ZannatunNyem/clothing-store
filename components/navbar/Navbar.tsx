@@ -11,28 +11,33 @@ const Navbar = async () => {
 
   return (
     <nav className="bg-[var(--color-navbar)] border-b border-[var(--color-accent)]/30">
-      <div className="mx-auto flex h-[72px] w-full max-w-7xl items-center px-6">
+      <div className="mx-auto flex min-h-[72px] w-full max-w-7xl items-center px-4 sm:px-6">
         {/* Logo */}
         <Link
           href="/"
-          className="font-serif text-2xl tracking-[0.18em] text-[var(--color-accent)] transition hover:opacity-80"
+          className="shrink-0 font-serif text-xl sm:text-2xl tracking-[0.18em] text-[var(--color-accent)] transition hover:opacity-80"
         >
           LUMÉ
         </Link>
 
-        {/* Navigation - Center */}
-        <div className="absolute left-1/2 -translate-x-1/2">
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex flex-1 justify-center">
           <NavLinks role={role} />
         </div>
 
         {/* Right Side */}
-        <div className="ml-auto flex items-center gap-5">
+        <div className="ml-auto flex shrink-0 items-center gap-3 sm:gap-5">
           {/* Cart - Customer only */}
           {role !== "ADMIN" && <CartButton />}
 
           {/* Login / User */}
           <LoginBtn />
         </div>
+      </div>
+
+      {/* Mobile Navigation */}
+      <div className="flex md:hidden justify-center border-t border-[var(--color-accent)]/10 px-4 py-3">
+        <NavLinks role={role} />
       </div>
     </nav>
   );
