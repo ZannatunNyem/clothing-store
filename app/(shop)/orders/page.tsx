@@ -51,18 +51,18 @@ export default function OrdersPage() {
     return (
       <main className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
         <div className="animate-pulse">
-          <div className="h-8 w-40 rounded-lg bg-gray-200" />
-          <div className="mt-3 h-4 w-64 rounded bg-gray-100" />
+          <div className="h-8 w-40 rounded-lg bg-gray-300" />
+          <div className="mt-3 h-4 w-64 rounded bg-gray-300" />
 
           <div className="mt-8 space-y-4">
             {[1, 2, 3].map((item) => (
               <div
                 key={item}
-                className="rounded-2xl border border-gray-200 bg-white p-5"
+                className="rounded-2xl border border-gray-300 bg-white p-5"
               >
-                <div className="h-5 w-40 rounded bg-gray-200" />
-                <div className="mt-3 h-4 w-24 rounded bg-gray-100" />
-                <div className="mt-5 h-16 rounded-xl bg-gray-100" />
+                <div className="h-5 w-40 rounded bg-gray-300" />
+                <div className="mt-3 h-4 w-24 rounded bg-gray-300" />
+                <div className="mt-5 h-16 rounded-xl bg-gray-300" />
               </div>
             ))}
           </div>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import ProductGrid from "@/components/product/ProductGrid";
-
+import { useSearchParams } from "next/navigation";
 type Product = {
   id: string;
   name: string;
@@ -21,12 +21,17 @@ type Product = {
 export default function ShopPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-
+  const searchParams = useSearchParams();
+  const category = searchParams.get("category");
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const response = await fetch("/api/products");
-
+        // const response = await fetch("/api/products");
+        const response = await fetch(
+          category
+            ? `/api/products?category=${encodeURIComponent(category)}`
+            : "/api/products",
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch products");
         }

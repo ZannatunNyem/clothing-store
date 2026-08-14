@@ -1,60 +1,3 @@
-// import Link from "next/link";
-
-// const NavLinks = () => {
-//   return (
-//     <div className="hidden lg:flex">
-//       <ul className="menu menu-horizontal gap-1">
-//         <li>
-//           <Link
-//             href="/"
-//             className="text-[var(--color-body)] hover:bg-[var(--color-accent)]"
-//           >
-//             Home
-//           </Link>
-//         </li>
-
-//         <li>
-//           <Link
-//             href="/shop"
-//             className="text-[var(--color-body)] hover:bg-[var(--color-accent)]"
-//           >
-//             Shop
-//           </Link>
-//         </li>
-
-//         <li>
-//           <Link
-//             href="/category/women"
-//             className="text-[var(--color-body)] hover:bg-[var(--color-accent)]"
-//           >
-//             Women
-//           </Link>
-//         </li>
-
-//         <li>
-//           <Link
-//             href="/category/men"
-//             className="text-[var(--color-body)] hover:bg-[var(--color-accent)]"
-//           >
-//             Men
-//           </Link>
-//         </li>
-
-//         <li>
-//           <Link
-//             href="/category/kids"
-//             className="text-[var(--color-body)] hover:bg-[var(--color-accent)]"
-//           >
-//             Kids
-//           </Link>
-//         </li>
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default NavLinks;
-
 import Link from "next/link";
 
 type NavLinksProps = {
@@ -88,17 +31,10 @@ const NavLinks = ({ role }: NavLinksProps) => {
         </Link>
 
         <Link
-          href="/admin/users"
-          className="text-white transition hover:text-[var(--color-accent)]"
-        >
-          Users
-        </Link>
-
-        <Link
-          href="/"
+          href="/admin"
           className="text-[var(--color-accent)] transition hover:opacity-80"
         >
-          Store
+          Admin
         </Link>
       </div>
     );

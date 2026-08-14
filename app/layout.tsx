@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import AuthSessionProvider from "@/components/providers/SessionProvider";
 import { CartProvider } from "@/context/CartContext";
+import Footer from "@/components/footer/Footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Navbar />
 
             <main className="flex-1">{children}</main>
+            <Footer></Footer>
           </AuthSessionProvider>
         </CartProvider>
       </body>

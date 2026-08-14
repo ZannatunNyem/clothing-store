@@ -145,24 +145,24 @@ export default function CheckoutPage() {
     return (
       <main className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="animate-pulse">
-          <div className="h-8 w-40 rounded bg-gray-200" />
-          <div className="mt-3 h-4 w-64 rounded bg-gray-100" />
+          <div className="h-8 w-40 rounded bg-gray-300" />
+          <div className="mt-3 h-4 w-64 rounded bg-gray-300" />
 
           <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_320px]">
-            <div className="rounded-2xl border border-gray-200 bg-white p-6">
-              <div className="h-6 w-48 rounded bg-gray-200" />
+            <div className="rounded-2xl border border-gray-300 bg-white p-6">
+              <div className="h-6 w-48 rounded bg-gray-300" />
 
               <div className="mt-6 space-y-5">
                 {[1, 2, 3, 4, 5].map((item) => (
                   <div key={item}>
-                    <div className="h-4 w-24 rounded bg-gray-100" />
-                    <div className="mt-2 h-11 w-full rounded-xl bg-gray-100" />
+                    <div className="h-4 w-24 rounded bg-gray-300" />
+                    <div className="mt-2 h-11 w-full rounded-xl bg-gray-300" />
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="h-64 rounded-2xl border border-gray-200 bg-white p-6" />
+            <div className="h-64 rounded-2xl border border-gray-300 bg-white p-6" />
           </div>
         </div>
       </main>

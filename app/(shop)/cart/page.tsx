@@ -197,8 +197,8 @@ export default function CartPage() {
       <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         {/* Heading Skeleton */}
         <div className="animate-pulse">
-          <div className="h-8 w-40 rounded-lg bg-gray-200" />
-          <div className="mt-3 h-4 w-64 rounded bg-gray-100" />
+          <div className="h-8 w-40 rounded-lg bg-gray-300" />
+          <div className="mt-3 h-4 w-64 rounded bg-gray-300" />
         </div>
 
         <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_320px]">
@@ -207,45 +207,45 @@ export default function CartPage() {
             {[1, 2, 3].map((item) => (
               <div
                 key={item}
-                className="flex gap-4 rounded-2xl border border-gray-200 bg-white p-4"
+                className="flex gap-4 rounded-2xl border border-gray-300 bg-white p-4"
               >
                 {/* Image */}
-                <div className="h-24 w-24 shrink-0 animate-pulse rounded-xl bg-gray-200 sm:h-28 sm:w-28" />
+                <div className="h-24 w-24 shrink-0 animate-pulse rounded-xl bg-gray-300 sm:h-28 sm:w-28" />
 
                 <div className="flex flex-1 flex-col justify-between">
                   {/* Product name */}
-                  <div className="h-5 w-40 animate-pulse rounded bg-gray-200" />
+                  <div className="h-5 w-40 animate-pulse rounded bg-gray-300" />
 
                   {/* Price */}
-                  <div className="mt-2 h-4 w-20 animate-pulse rounded bg-gray-100" />
+                  <div className="mt-2 h-4 w-20 animate-pulse rounded bg-gray-300" />
 
                   {/* Quantity */}
-                  <div className="mt-4 h-9 w-24 animate-pulse rounded-lg bg-gray-100" />
+                  <div className="mt-4 h-9 w-24 animate-pulse rounded-lg bg-gray-300" />
                 </div>
 
                 {/* Price */}
-                <div className="h-5 w-16 animate-pulse rounded bg-gray-200" />
+                <div className="h-5 w-16 animate-pulse rounded bg-gray-300" />
               </div>
             ))}
           </div>
 
           {/* Summary Skeleton */}
-          <aside className="h-fit rounded-2xl border border-gray-200 bg-white p-6">
-            <div className="h-6 w-32 animate-pulse rounded bg-gray-200" />
+          <aside className="h-fit rounded-2xl border border-gray-300 bg-white p-6">
+            <div className="h-6 w-32 animate-pulse rounded bg-gray-300" />
 
             <div className="mt-7 flex justify-between">
-              <div className="h-4 w-16 animate-pulse rounded bg-gray-100" />
-              <div className="h-4 w-20 animate-pulse rounded bg-gray-100" />
+              <div className="h-4 w-16 animate-pulse rounded bg-gray-300" />
+              <div className="h-4 w-20 animate-pulse rounded bg-gray-300" />
             </div>
 
-            <div className="my-5 border-t border-gray-100" />
+            <div className="my-5 border-t border-gray-300" />
 
             <div className="flex justify-between">
-              <div className="h-6 w-14 animate-pulse rounded bg-gray-200" />
-              <div className="h-6 w-24 animate-pulse rounded bg-gray-200" />
+              <div className="h-6 w-14 animate-pulse rounded bg-gray-300" />
+              <div className="h-6 w-24 animate-pulse rounded bg-gray-300" />
             </div>
 
-            <div className="mt-6 h-11 w-full animate-pulse rounded-xl bg-gray-200" />
+            <div className="mt-6 h-11 w-full animate-pulse rounded-xl bg-gray-300" />
           </aside>
         </div>
       </main>

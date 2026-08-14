@@ -1,9 +1,9 @@
 "use client";
 
-import { signIn } from "next-auth/react";
-import { useState } from "react";
 import Swal from "sweetalert2";
 import GoogleButton from "./GoogleButton";
+import { useState } from "react";
+import { signIn, getSession } from "next-auth/react";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -33,6 +33,8 @@ export default function LoginForm() {
         return;
       }
 
+      const session = await getSession();
+
       await Swal.fire({
         icon: "success",
         title: "Welcome Back!",
@@ -42,11 +44,15 @@ export default function LoginForm() {
         showConfirmButton: false,
       });
 
-      window.location.href = "/";
+      if (session?.user?.role === "ADMIN") {
+        window.location.href = "/admin";
+      } else {
+        window.location.href = "/";
+      }
     } catch (error) {
       console.error(error);
 
-      Swal.fire({
+      await Swal.fire({
         icon: "error",
         title: "Something went wrong",
         text: "Please try again.",

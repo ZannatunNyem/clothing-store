@@ -1,10 +1,34 @@
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
-export async function GET() {
+// export async function GET() {
+//   const products = await prisma.product.findMany({
+//     include: { category: true },
+//     orderBy: { createdAt: "desc" },
+//   });
+
+//   return NextResponse.json(products);
+// }
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const category = searchParams.get("category");
+
   const products = await prisma.product.findMany({
-    include: { category: true },
-    orderBy: { createdAt: "desc" },
+    where: category
+      ? {
+          category: {
+            name: category,
+          },
+        }
+      : undefined,
+
+    include: {
+      category: true,
+    },
+
+    orderBy: {
+      createdAt: "desc",
+    },
   });
 
   return NextResponse.json(products);

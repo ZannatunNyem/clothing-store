@@ -1,7 +1,8 @@
+import Link from "next/link";
 const Banner = () => {
   return (
     <section className="overflow-hidden bg-[var(--color-body)]">
-      <div className="mx-auto flex max-w-7xl flex-col gap-12 px-5 py-12 sm:px-8 sm:py-16 lg:flex-row-reverse lg:items-center lg:gap-16 lg:px-10 lg:py-20">
+      <div className="mx-auto flex max-w-7xl flex-col gap-12 px-5 py-8 sm:px-8 sm:py-16 lg:flex-row-reverse lg:items-center lg:gap-16 lg:px-10 lg:py-16">
         {/* IMAGE COLLAGE */}
         <div className="w-full lg:w-1/2">
           <div className="mx-auto grid w-full max-w-[520px] grid-cols-2 gap-2.5 sm:gap-3">
@@ -71,16 +72,19 @@ const Banner = () => {
             Discover timeless pieces crafted for every moment. Explore our
             latest collection and express your unique sense of style.
           </p>
-
           {/* BUTTONS */}
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start">
-            <button className="w-full rounded-full border border-[var(--color-accent)] bg-[var(--color-primary)] px-8 py-3 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-[var(--color-accent)] sm:w-auto">
-              Shop Now
-            </button>
+            <Link href="/shop">
+              <button className="w-full rounded-full border border-[var(--color-accent)] bg-[var(--color-primary)] px-8 py-3 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-[var(--color-accent)] sm:w-auto">
+                Shop Now
+              </button>
+            </Link>
 
-            <button className="w-full rounded-full border border-[var(--color-accent)] bg-transparent px-8 py-3 text-sm font-medium tracking-wide text-[var(--color-primary)] transition duration-300 hover:bg-[var(--color-accent)] hover:text-white sm:w-auto">
-              Explore Collection
-            </button>
+            <Link href="/shop">
+              <button className="w-full rounded-full border border-[var(--color-accent)] bg-transparent px-8 py-3 text-sm font-medium tracking-wide text-[var(--color-primary)] transition duration-300 hover:bg-[var(--color-accent)] hover:text-white sm:w-auto">
+                Explore Collection
+              </button>
+            </Link>
           </div>
 
           {/* BRAND DETAIL */}
