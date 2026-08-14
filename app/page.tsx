@@ -3,7 +3,6 @@ import BrandSection from "@/components/home/BrandSection";
 import CategorySection from "@/components/home/CategorySection";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import TrustSection from "@/components/home/TrustSection";
-import Image from "next/image";
 
 export default function Home() {
   return (
