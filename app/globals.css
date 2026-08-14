@@ -2,35 +2,35 @@
 @plugin "daisyui";
 
 :root {
-  /* Main Body Background - Warm Cream */
-  --color-body: #e2d9cb;
+  /* Main Body Background - Warm Ivory/Cream */
+  --color-body: #f3eee3;
 
-  /* Navbar Background - Deep Navy */
-  --color-navbar: #022e4c;
+  /* Navbar Background - Deep Emerald Green */
+  --color-navbar: #062f27;
 
-  /* Card Background - White */
-  --color-card: #ffffff;
+  /* Card Background - Soft Cream */
+  --color-card: #fffdf7;
 
-  /* Sidebar Background - Slate Blue */
-  --color-sidebar: #517493;
+  /* Sidebar Background - Muted Green */
+  --color-sidebar: #315b50;
 
-  /* Border Color */
-  --color-border: #d6cfc0;
+  /* Border Color - Warm Beige */
+  --color-border: #d8cfbb;
 
-  /* Primary Text - Burgundy */
-  --color-text: #56061d;
+  /* Primary Text - Deep Emerald */
+  --color-text: #073c31;
 
-  /* Secondary Text - Slate Blue */
-  --color-text-light: #517493;
+  /* Secondary Text - Warm Gray */
+  --color-text-light: #746f64;
 
-  /* Primary - Deep Navy */
-  --color-primary: #022e4c;
+  /* Primary - Deep Emerald */
+  --color-primary: #063c31;
 
-  /* Accent - Burgundy */
-  --color-accent: #56061d;
+  /* Accent - Elegant Gold */
+  --color-accent: #bb8b1a;
 
-  /* Success - Slate Blue */
-  --color-success: #517493;
+  /* Success - Muted Emerald */
+  --color-success: #47766a;
 }
 
 @theme inline {

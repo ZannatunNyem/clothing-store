@@ -1,8 +1,13 @@
 import prisma from "./lib/prisma";
 
 async function main() {
-  const categories = await prisma.category.findMany();
-  console.log(categories);
+  const result = await prisma.$queryRaw`SELECT NOW()`;
+
+  console.log("Database connected:", result);
 }
 
-main();
+main()
+  .catch(console.error)
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
