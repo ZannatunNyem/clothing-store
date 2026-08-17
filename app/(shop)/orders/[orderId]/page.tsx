@@ -176,7 +176,7 @@ export default async function OrderDetailsPage({
       {/* Actions */}
       <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
         <Link
-          href="/products"
+          href="/shop"
           className="flex h-11 items-center justify-center rounded-xl bg-[var(--color-primary)] px-7 text-sm font-medium text-white transition hover:bg-[var(--color-accent)]"
         >
           Continue Shopping

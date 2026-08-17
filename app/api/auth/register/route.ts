@@ -6,8 +6,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    const { name, email, password } = body;
-
+    const { name, email, password, image } = body;
     if (!name || !email || !password) {
       return NextResponse.json(
         { message: "All fields are required" },
@@ -33,6 +32,7 @@ export async function POST(request: Request) {
         name,
         email,
         password: hashedPassword,
+        image,
       },
     });
 

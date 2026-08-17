@@ -29,10 +29,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <CartProvider>
           <AuthSessionProvider>
-            <Navbar />
+            {/* <Navbar /> */}
 
             <main className="flex-1">{children}</main>
-            <Footer></Footer>
+            {/* <Footer></Footer> */}
           </AuthSessionProvider>
         </CartProvider>
       </body>

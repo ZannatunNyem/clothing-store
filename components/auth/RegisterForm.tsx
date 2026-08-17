@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 import { signIn } from "next-auth/react";
 import Swal from "sweetalert2";
 import GoogleButton from "./GoogleButton";
@@ -9,6 +10,8 @@ export default function RegisterForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
@@ -26,6 +29,7 @@ export default function RegisterForm() {
           name,
           email,
           password,
+          image,
         }),
       });
 
@@ -85,120 +89,208 @@ export default function RegisterForm() {
   }
 
   return (
-    <div className="w-full max-w-[440px] rounded-3xl border border-[var(--color-border)] bg-[var(--color-card)] px-8 py-9 shadow-[0_15px_45px_rgba(6,60,49,0.10)] sm:px-10 sm:py-10">
-      {/* Header */}
-      <div className="mb-8 text-center">
-        <p className="mb-2 text-xs font-medium uppercase tracking-[0.35em] text-[var(--color-accent)]">
-          Join Us
-        </p>
+    <div className="w-full max-w-5xl overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] shadow-[0_12px_40px_rgba(6,60,49,0.08)]">
+      <div className="grid lg:grid-cols-2">
+        {/* Left — Image */}
+        <div className="relative hidden min-h-[720px] lg:block">
+          <img
+            src="/img-3.jpg"
+            alt="LUME fashion collection"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
 
-        <h1 className="text-[28px] font-medium leading-tight text-[var(--color-text)]">
-          Create your account
-        </h1>
+          {/* Image Overlay */}
+          <div className="absolute inset-0 bg-[var(--color-primary)]/35" />
 
-        <div className="mx-auto mt-3 h-px w-12 bg-[var(--color-accent)]" />
+          {/* Image Content */}
+          <div className="absolute inset-x-0 bottom-0 p-10 text-white">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em]">
+              LUME
+            </p>
 
-        <p className="mt-3 text-sm text-[var(--color-text-light)]">
-          Start your shopping journey with us
-        </p>
+            <h2 className="max-w-sm text-3xl font-semibold leading-tight">
+              Style that feels like you.
+            </h2>
+
+            <p className="mt-3 max-w-sm text-sm leading-6 text-white/80">
+              Discover timeless pieces designed for your everyday style.
+            </p>
+          </div>
+        </div>
+
+        {/* Right — Registration Form */}
+        <div className="px-7 py-8 sm:px-10 sm:py-10 lg:px-12 lg:py-12">
+          {/* Header */}
+          <div className="mb-8">
+            <p className="mb-2 text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--color-accent)]">
+              Create Account
+            </p>
+
+            <h1 className="text-center text-2xl font-semibold tracking-tight text-[var(--color-text)]">
+              Welcome to LUME
+            </h1>
+
+            <p className="mt-2 text-center text-sm leading-6 text-[var(--color-text-light)]">
+              Enjoy a seamless shopping experience.
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {/* Full Name */}
+            <div>
+              <label
+                htmlFor="name"
+                className="mb-2 block text-sm font-medium text-[var(--color-text)]"
+              >
+                Full name
+              </label>
+
+              <input
+                id="name"
+                type="text"
+                placeholder="Enter your full name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="h-12 w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-body)] px-4 text-sm text-[var(--color-text)] outline-none transition-all placeholder:text-[var(--color-text-light)]/70 focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/10"
+                required
+              />
+            </div>
+
+            {/* Email */}
+            <div>
+              <label
+                htmlFor="email"
+                className="mb-2 block text-sm font-medium text-[var(--color-text)]"
+              >
+                Email address
+              </label>
+
+              <input
+                id="email"
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="h-12 w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-body)] px-4 text-sm text-[var(--color-text)] outline-none transition-all placeholder:text-[var(--color-text-light)]/70 focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/10"
+                required
+              />
+            </div>
+
+            {/* Password */}
+            <div>
+              <div className="mb-2 flex items-center justify-between">
+                <label
+                  htmlFor="password"
+                  className="text-sm font-medium text-[var(--color-text)]"
+                >
+                  Password
+                </label>
+              </div>
+
+              <div className="relative">
+                <input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="h-12 w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-body)] px-4 pr-12 text-sm text-[var(--color-text)] outline-none transition-all placeholder:text-[var(--color-text-light)]/70 focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/10"
+                  required
+                  minLength={6}
+                />
+
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1.5 text-[var(--color-text-light)] transition hover:bg-[var(--color-border)]/40 hover:text-[var(--color-primary)]"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? <EyeOff size={17} /> : <Eye size={17} />}
+                </button>
+              </div>
+            </div>
+
+            {/* Profile Image */}
+            <div>
+              <label
+                htmlFor="image"
+                className="mb-2 block text-sm font-medium text-[var(--color-text)]"
+              >
+                Profile image URL
+                <span className="ml-1 text-xs font-normal text-[var(--color-text-light)]">
+                  (optional)
+                </span>
+              </label>
+
+              <input
+                id="image"
+                type="url"
+                placeholder="https://example.com/photo.jpg"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+                className="h-12 w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-body)] px-4 text-sm text-[var(--color-text)] outline-none transition-all placeholder:text-[var(--color-text-light)]/70 focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/10"
+              />
+            </div>
+
+            {/* Terms */}
+            <div className="flex items-start gap-2 pt-1">
+              <input
+                id="terms"
+                type="checkbox"
+                required
+                className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer rounded border-[var(--color-border)] accent-[var(--color-accent)]"
+              />
+
+              <label
+                htmlFor="terms"
+                className="cursor-pointer text-xs leading-5 text-[var(--color-text-light)]"
+              >
+                I agree to the{" "}
+                <a
+                  href="/terms"
+                  className="font-medium text-[var(--color-accent)] underline underline-offset-2 transition hover:text-[var(--color-gold-dark)]"
+                >
+                  Terms & Conditions
+                </a>
+              </label>
+            </div>
+
+            {/* Register */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="h-12 w-full rounded-lg bg-[var(--color-primary)] text-sm font-semibold tracking-wide text-white transition-all hover:bg-[var(--color-accent)] hover:shadow-md disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {loading ? "Creating account..." : "Create account"}
+            </button>
+          </form>
+
+          {/* Divider */}
+          <div className="my-7 flex items-center gap-4">
+            <div className="h-px flex-1 bg-[var(--color-border)]" />
+
+            <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--color-text-light)]">
+              Or
+            </span>
+
+            <div className="h-px flex-1 bg-[var(--color-border)]" />
+          </div>
+
+          {/* Google */}
+          <GoogleButton />
+
+          {/* Login */}
+          <p className="mt-6 text-center text-sm text-[var(--color-text-light)]">
+            Already have an account?{" "}
+            <a
+              href="/login"
+              className="font-semibold text-[var(--color-accent)] transition hover:text-[var(--color-gold-dark)]"
+            >
+              Sign in
+            </a>
+          </p>
+        </div>
       </div>
-
-      <form onSubmit={handleSubmit} className="space-y-5">
-        {/* Name */}
-        <div>
-          <label
-            htmlFor="name"
-            className="mb-2 block text-sm font-medium text-[var(--color-text)]"
-          >
-            Full name
-          </label>
-
-          <input
-            id="name"
-            type="text"
-            placeholder="Your full name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="h-12 w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-body)] px-4 text-sm text-[var(--color-text)] outline-none transition placeholder:text-[var(--color-text-light)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20"
-            required
-          />
-        </div>
-
-        {/* Email */}
-        <div>
-          <label
-            htmlFor="email"
-            className="mb-2 block text-sm font-medium text-[var(--color-text)]"
-          >
-            Email address
-          </label>
-
-          <input
-            id="email"
-            type="email"
-            placeholder="you@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="h-12 w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-body)] px-4 text-sm text-[var(--color-text)] outline-none transition placeholder:text-[var(--color-text-light)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20"
-            required
-          />
-        </div>
-
-        {/* Password */}
-        <div>
-          <label
-            htmlFor="password"
-            className="mb-2 block text-sm font-medium text-[var(--color-text)]"
-          >
-            Password
-          </label>
-
-          <input
-            id="password"
-            type="password"
-            placeholder="Create a password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="h-12 w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-body)] px-4 text-sm text-[var(--color-text)] outline-none transition placeholder:text-[var(--color-text-light)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20"
-            required
-            minLength={6}
-          />
-        </div>
-
-        {/* Register */}
-        <button
-          type="submit"
-          disabled={loading}
-          className="h-12 w-full rounded-xl bg-[var(--color-primary)] text-sm font-medium tracking-wide text-white transition hover:bg-[var(--color-accent)] disabled:cursor-not-allowed disabled:opacity-60"
-        >
-          {loading ? "Creating Account..." : "Create Account"}
-        </button>
-      </form>
-
-      {/* Divider */}
-      <div className="my-6 flex items-center gap-4">
-        <div className="h-px flex-1 bg-[var(--color-border)]" />
-
-        <span className="text-xs tracking-widest text-[var(--color-text-light)]">
-          OR
-        </span>
-
-        <div className="h-px flex-1 bg-[var(--color-border)]" />
-      </div>
-
-      {/* Google */}
-      <GoogleButton />
-
-      {/* Login */}
-      <p className="mt-7 text-center text-sm text-[var(--color-text-light)]">
-        Already have an account?{" "}
-        <a
-          href="/login"
-          className="font-medium text-[var(--color-accent)] transition hover:text-[var(--color-gold-dark)]"
-        >
-          Sign in
-        </a>
-      </p>
     </div>
   );
 }

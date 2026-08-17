@@ -10,33 +10,33 @@ const Navbar = async () => {
   const role = session?.user?.role;
 
   return (
-    <nav className="bg-[var(--color-navbar)] border-b border-[var(--color-accent)]/30">
-      <div className="mx-auto flex min-h-[72px] w-full max-w-7xl items-center px-4 sm:px-6">
+    <nav className="sticky top-0 z-50 border-b border-[var(--color-accent)]/20 bg-[var(--color-navbar)]">
+      {" "}
+      <div className="mx-auto flex min-h-[76px] w-full max-w-7xl items-center gap-8 px-5 sm:px-7 lg:px-8">
         {/* Logo */}
         <Link
           href="/"
-          className="shrink-0 font-serif text-xl sm:text-2xl tracking-[0.18em] text-[var(--color-accent)] transition hover:opacity-80"
+          className="shrink-0 font-serif text-xl tracking-[0.18em] text-[var(--color-accent)] transition-opacity hover:opacity-80 sm:text-2xl"
         >
           LUMÉ
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex flex-1 justify-center">
+        <div className="hidden min-w-0 flex-1 md:block">
           <NavLinks role={role} />
         </div>
 
         {/* Right Side */}
-        <div className="ml-auto flex shrink-0 items-center gap-3 sm:gap-5">
-          {/* Cart - Customer only */}
+        <div className="ml-auto flex shrink-0 items-center gap-4">
           {role !== "ADMIN" && <CartButton />}
 
-          {/* Login / User */}
+          <div className="h-6 w-px bg-white/15" />
+
           <LoginBtn />
         </div>
       </div>
-
       {/* Mobile Navigation */}
-      <div className="flex md:hidden justify-center border-t border-[var(--color-accent)]/10 px-4 py-3">
+      <div className="border-t border-[var(--color-accent)]/10 px-5 py-3 md:hidden">
         <NavLinks role={role} />
       </div>
     </nav>

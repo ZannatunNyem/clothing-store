@@ -1,68 +1,52 @@
 import Link from "next/link";
+import SearchBar from "./SearchBar";
 
 type NavLinksProps = {
   role?: string;
 };
 
 const NavLinks = ({ role }: NavLinksProps) => {
-  // ADMIN NAVIGATION
   if (role === "ADMIN") {
     return (
-      <div className="flex items-center gap-7">
+      <div className="flex items-center">
         <Link
-          href="/admin"
-          className="text-white transition hover:text-[var(--color-accent)]"
+          href="/admin/dashboard"
+          className="text-sm font-medium tracking-wide text-white/90 transition-colors hover:text-[var(--color-accent)]"
         >
           Dashboard
-        </Link>
-
-        <Link
-          href="/admin/products"
-          className="text-white transition hover:text-[var(--color-accent)]"
-        >
-          Products
-        </Link>
-
-        <Link
-          href="/admin/orders"
-          className="text-white transition hover:text-[var(--color-accent)]"
-        >
-          Orders
-        </Link>
-
-        <Link
-          href="/admin"
-          className="text-[var(--color-accent)] transition hover:opacity-80"
-        >
-          Admin
         </Link>
       </div>
     );
   }
 
-  // CUSTOMER NAVIGATION
   return (
-    <div className="flex items-center gap-7">
-      <Link
-        href="/"
-        className="text-white transition hover:text-[var(--color-accent)]"
-      >
-        Home
-      </Link>
+    <div className="flex w-full items-center justify-between gap-8">
+      <div className="flex items-center gap-8">
+        <Link
+          href="/"
+          className="text-sm font-medium text-white/90 transition-colors hover:text-[var(--color-accent)]"
+        >
+          Home
+        </Link>
 
-      <Link
-        href="/shop"
-        className="text-white transition hover:text-[var(--color-accent)]"
-      >
-        Shop
-      </Link>
+        <Link
+          href="/shop"
+          className="text-sm font-medium text-white/90 transition-colors hover:text-[var(--color-accent)]"
+        >
+          Shop
+        </Link>
 
-      <Link
-        href="/orders"
-        className="text-white transition hover:text-[var(--color-accent)]"
-      >
-        Orders
-      </Link>
+        <Link
+          href="/contact"
+          className="text-sm font-medium text-white/90 transition-colors hover:text-[var(--color-accent)]"
+        >
+          Contact
+        </Link>
+      </div>
+
+      <div className="ml-4 w-[300px] lg:w-[340px]">
+        <SearchBar />
+      </div>
     </div>
   );
 };

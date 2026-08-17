@@ -19,15 +19,12 @@ export default function AddToCartButton({
 
   const { refreshCart } = useCart();
 
-  // Check whether this product is already in the cart
   useEffect(() => {
     async function checkCart() {
       try {
         const response = await fetch("/api/cart");
 
-        if (!response.ok) {
-          return;
-        }
+        if (!response.ok) return;
 
         const cart = await response.json();
 
@@ -74,13 +71,10 @@ export default function AddToCartButton({
         return;
       }
 
-      // Change this button's state
       setAdded(true);
 
-      // Update Navbar cart count immediately
       await refreshCart();
 
-      // Success message
       Swal.fire({
         icon: "success",
         title: "Added to Cart!",
@@ -89,8 +83,6 @@ export default function AddToCartButton({
         timer: 1800,
         showConfirmButton: false,
       });
-
-      console.log("Cart item:", data);
     } catch (error) {
       console.error("Add to cart error:", error);
 
@@ -109,17 +101,23 @@ export default function AddToCartButton({
     <button
       type="button"
       onClick={handleAddToCart}
-      disabled={stock <= 0 || loading || added || checking}
-      className="h-11 w-full rounded-xl bg-[var(--color-primary)] text-sm font-medium tracking-wide text-white transition hover:bg-[var(--color-accent)] disabled:cursor-not-allowed disabled:opacity-50"
+      disabled={stock <= 0 || loading || checking}
+      className={`h-11 w-full rounded-xl text-sm font-medium tracking-wide transition-all ${
+        stock <= 0
+          ? "cursor-not-allowed bg-gray-300 text-gray-500"
+          : added
+            ? "bg-[var(--color-accent)] text-white hover:opacity-90"
+            : "bg-[var(--color-primary)] text-white hover:bg-[var(--color-accent)]"
+      }`}
     >
       {stock <= 0
         ? "Out of Stock"
         : checking
           ? "Checking..."
-          : added
-            ? "Added"
-            : loading
-              ? "Adding..."
+          : loading
+            ? "Adding..."
+            : added
+              ? "Added to Cart"
               : "Add to Cart"}
     </button>
   );
